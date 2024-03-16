@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result Display</title>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+</style>
+<script>
+function validateData() {
+    var rollNo = document.getElementById('rollNo').value;
+    var name = document.getElementById('name').value;
+    var fatherName = document.getElementById('fatherName').value;
+    var marksheetDiv = document.getElementById('marksheet');
+
+    if(rollNo.length === 8 && name.length >= 12 && fatherName.length >= 5) {
+        if(name === 'Keshav Kumar') {
+            marksheetDiv.innerHTML = `
+                <table>
+                    <tr>
+                        <th>Roll Code</th>
+                        <th>Roll Number</th>
+                        <th>Name</th>
+                        <th>Father's Name</th>
+                        <th>Status</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>85050</td>
+                        <td>24010057</td>
+                        <td>Keshav Kumar</td>
+                        <td>Mukesh Kumar</td>
+                        <td>Pass</td>
+                        <td>417/500</td>
+                    </tr>
+                </table>`;
+        } else if(name === 'Rishuraj Kumar') {
+            marksheetDiv.innerHTML = `
+                <table>
+                    <tr>
+                        <th>Roll Code</th>
+                        <th>Roll Number</th>
+                        <th>Name</th>
+                        <th>Father's Name</th>
+                        <th>Status</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>85050</td>
+                        <td>24010015</td>
+                        <td>Rishuraj Kumar</td>
+                        <td>Sunil Singh</td>
+                        <td>Pass</td>
+                        <td>380/500</td>
+                    </tr>
+                </table>`;
+        } else {
+            // ... rest of your existing code for other names
+        }
+        marksheetDiv.style.display = 'block';
+    } else {
+        alert('Error: Please check the input requirements.');
+        marksheetDiv.style.display = 'none';
+    }
+}
+</script>
+</head>
+<body>
+<h1>Enter Your Details</h1>
+<form>
+    Roll No: <input type="text" id="rollNo" required><br>
+    Name: <input type="text" id="name" required><br>
+    Father's Name: <input type="text" id="fatherName" required><br>
+    <input type="button" value="Show Marksheet" onclick="validateData()">
+</form>
+<div id="marksheet" style="display:none;"></div>
+</body>
+</html>
